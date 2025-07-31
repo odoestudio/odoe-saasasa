@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coffee App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="overflow-hidden">
+
+    <div id="app-container" class="relative w-full max-w-md h-screen md:h-[90vh] md:max-h-[800px] bg-white mx-auto my-auto md:my-10 p-4 md:rounded-lg shadow-2xl overflow-hidden flex flex-col">
+        <!-- Header / Nav -->
+        <header class="relative z-20 text-center pb-2 border-b-2 border-dashed border-gray-300">
+            <h1 class="font-kalam text-4xl font-bold text-gray-800">The Coffee App</h1>
+            <div class="absolute -top-2 -left-4 -rotate-12">
+                <i class="fas fa-mug-hot text-3xl text-brown-400"></i>
+            </div>
+            <div class="flex justify-center space-x-8 mt-4">
+                <button id="discover-btn" class="nav-tab active">Discover</button>
+                <button id="matches-btn" class="nav-tab">Matches</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow relative py-4">
+            <!-- Swipe View -->
+            <div id="swipe-view" class="w-full h-full">
+                <div id="card-stack" class="relative w-full h-[calc(100%-100px)] flex items-center justify-center">
+                    <!-- Profile cards will be injected here -->
+                    <div id="no-more-profiles" class="hidden flex-col items-center text-center font-gochi text-2xl text-gray-500">
+                        <i class="far fa-sad-tear text-6xl mb-4"></i>
+                        <p>That's everyone for now!</p>
+                        <p>Check back later.</p>
+                    </div>
+                </div>
+                <div id="action-buttons" class="absolute bottom-0 left-0 right-0 h-[100px] flex justify-center items-center space-x-12">
+                    <button id="dislike-btn" class="action-btn dislike-btn"><i class="fas fa-times"></i></button>
+                    <button id="like-btn" class="action-btn like-btn"><i class="fas fa-heart"></i></button>
+                </div>
+            </div>
+
+            <!-- Matches View -->
+            <div id="matches-view" class="w-full h-full hidden overflow-y-auto">
+                <h2 class="font-kalam text-2xl text-center text-gray-700 mb-4">Your Doodled Matches!</h2>
+                <div id="matches-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-2">
+                    <!-- Matched profiles will be injected here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Match Modal -->
+    <div id="match-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="match-modal-content text-center p-8">
+            <h2 class="font-kalam text-5xl font-bold text-pink-500 animate-pulse">It's a Match!</h2>
+            <p class="font-gochi text-xl text-gray-700 mt-2">You and <span id="match-name"></span> liked each other!</p>
+            <div class="flex justify-center items-center space-x-4 my-6">
+                <img id="user-avatar" class="w-24 h-24 rounded-full border-4 border-white shadow-lg" src="" alt="Your avatar">
+                <i class="fas fa-heart text-4xl text-pink-500"></i>
+                <img id="match-avatar" class="w-24 h-24 rounded-full border-4 border-white shadow-lg" src="" alt="Match's avatar">
+            </div>
+            <button id="close-modal-btn" class="mt-4 font-kalam text-lg bg-white sketchy-border px-6 py-2 hover:bg-gray-100 transition-transform duration-200 hover:scale-105">Keep Swiping</button>
+        </div>
+    </div>
+
+    <a href="https://odoe.studio" target="_blank" class="fixed bottom-4 right-4 bg-gray-800 text-white text-xs font-sans py-1 px-3 rounded-full shadow-lg hover:bg-gray-700 transition-colors z-50">Made by Odoe</a>
+
+    <script src="script.js"></script>
+</body>
+</html>
